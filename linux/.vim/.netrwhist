@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/Ricky/repo/usbip/linux/userspace/src'
+let g:netrw_dirhist_2='/home/Ricky/repo/usbip/linux'
+let g:netrw_dirhist_3='/home/Ricky/source/mk802/linux-allwinner'
+let g:netrw_dirhist_4='/home/Ricky/repo/Hackberry/robotics/arduino/project/prj_009_servo_camera/pan_tilt_servo_cam'
