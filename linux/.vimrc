@@ -40,7 +40,25 @@ nmap <silent> <C-F> :NERDTreeToggle<CR>
 :map <C-F12> <ESC>:cnewer<CR>
 :map <S-F5> <ESC>:cwindow<CR>
 :map <F5> <ESC>:vimgrep  ./**/*.*
+:map <F3> <ESC>:LoadCscope<CR>
 if has("gui_running")
     set guifont=Courier\ 14
     colorscheme codeschool
 endif
+"load cscope
+function LoadCscope()
+    if (executable("cscope") && has("cscope"))
+        let UpperPath = findfile("cscope.out", ".;")
+        if (!empty(UpperPath))
+            let path = strpart(UpperPath, 0, match(UpperPath, "cscope.out$") - 1)   
+            if (!empty(path))
+                let s:CurrentDir = getcwd()
+                let s:FullPath = join([s:CurrentDir,path],"/")
+                let s:CscopeAddString = "cs add " . s:FullPath 
+                execute s:CscopeAddString 
+                normal <CR>
+            endif
+        endif
+    endif
+endfunction
+command LoadCscope call LoadCscope()
