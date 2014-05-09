@@ -54,9 +54,10 @@ function LoadCscope()
             if (!empty(path))
                 let s:CurrentDir = getcwd()
                 let s:FullPath = join([s:CurrentDir,path],"/")
-                let s:CscopeAddString = "cs add " . s:FullPath 
+                let s:CscopeLoc = join([s:CurrentDir,UpperPath],"/")
+                let s:CscopeAddString = "cs add " . s:CscopeLoc . " " . s:FullPath . "/" 
                 execute s:CscopeAddString 
-                normal <CR>
+                "normal <CR>
             endif
         endif
     endif
