@@ -6,6 +6,13 @@ set tabstop=4
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
+" turn on backup
+set backup
+
+" Set where to store backups
+set backupdir=~/.vim/backup
+set dir=~/.vim/backup
+
 
 "vundle configure
 set nocompatible              " be iMproved, required
@@ -41,6 +48,7 @@ nmap <silent> <C-F> :NERDTreeToggle<CR>
 :map <S-F5> <ESC>:cwindow<CR>
 :map <F5> <ESC>:vimgrep  ./**/*.*
 :map <F3> <ESC>:LoadCscope<CR>
+:map <F2> <ESC>:setlocal spell spelllang=en_us<CR>
 if has("gui_running")
     set guifont=Courier\ 14
     colorscheme codeschool
@@ -48,16 +56,20 @@ endif
 "load cscope
 function LoadCscope()
     if (executable("cscope") && has("cscope"))
-        let UpperPath = findfile("cscope.out", ".;")
-        if (!empty(UpperPath))
-            let path = strpart(UpperPath, 0, match(UpperPath, "cscope.out$") - 1)   
-            if (!empty(path))
-                let s:CurrentDir = getcwd()
-                let s:FullPath = join([s:CurrentDir,path],"/")
-                let s:CscopeLoc = join([s:CurrentDir,UpperPath],"/")
-                let s:CscopeAddString = "cs add " . s:CscopeLoc . " " . s:FullPath 
+        let CscopePath = findfile("cscope.out", ".;")
+        if (!empty(CscopePath))
+            let SrcPath = strpart(CscopePath, 0, match(CscopePath, "cscope.out$") - 1)   
+            if (!empty(SrcPath))
+                let s:CscopeAddString = "cs add " .CscopePath . " " .SrcPath
+                echo s:CscopeAddString
                 execute s:CscopeAddString 
                 "normal <CR>
+            else
+                "cscope.out is in current path
+                let CurrentDir = getcwd()
+                let s:CscopeAddString = "cs add " .CurrentDir."/cscope.out ".CurrentDir
+                echo s:CscopeAddString
+                execute s:CscopeAddString 
             endif
         endif
     endif
