@@ -75,3 +75,6 @@ function LoadCscope()
     endif
 endfunction
 command LoadCscope call LoadCscope()
+
+"For Python tab as 4 spaces
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
