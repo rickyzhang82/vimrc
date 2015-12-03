@@ -1,13 +1,16 @@
 syntax on
 set number
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=3
+set tabstop=3
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
 " turn on backup
 set backup
+
+"For Python special indention
+autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
 " Set where to store backups
 set backupdir=~/.vim/backup
