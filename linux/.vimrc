@@ -1,8 +1,8 @@
 syntax on
 set number
 set expandtab
-set shiftwidth=3
-set tabstop=3
+set shiftwidth=4
+set tabstop=4
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
@@ -32,6 +32,9 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'taglist.vim'
+Plugin 'justinmk/vim-syntax-extra'
+Plugin 'flazz/vim-colorschemes'
 filetype plugin indent on "required
 
 let g:ctrlp_map = '<c-p>'
@@ -78,3 +81,6 @@ function LoadCscope()
     endif
 endfunction
 command LoadCscope call LoadCscope()
+
+"For Python tab as 4 spaces
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
