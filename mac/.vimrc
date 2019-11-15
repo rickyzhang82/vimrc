@@ -2,7 +2,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
+set backspace=indent,eol,start
 set number 
 
 "vundle setup
@@ -19,6 +19,10 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'justinmk/vim-syntax-extra'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'stephpy/vim-yaml'
+
 filetype plugin indent on     " required
 
 "CtrlP configure
@@ -33,13 +37,14 @@ if has("gui_running")
     set guioptions-=r
     set guioptions-=l
     set guifont=Monaco:h18
-    colorscheme codeschool
 else
     syntax on
+    color peachpuff
     set term=builtin_ansi
 	:map <C-A> <Home>
 	:map <C-E> <End>
 endif
+
 
 if has("cscope")
     set cscopetag
